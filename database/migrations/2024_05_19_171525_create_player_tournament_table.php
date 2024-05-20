@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('tournament_id');
             $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
-            // Add any additional columns if needed
             $table->timestamps();
         });
     }

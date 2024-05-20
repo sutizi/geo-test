@@ -17,7 +17,6 @@ return new class extends Migration
             $table->date('date');
             $table->unsignedBigInteger('winner_id')->nullable()->after('date');
             $table->foreign('winner_id')->references('id')->on('players')->nullable();
-
             $table->timestamps();
         });
     }
