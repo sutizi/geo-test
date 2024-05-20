@@ -41,6 +41,7 @@ class Tournament extends Model
     }
 
     public function simulateGame(Player $player1, Player $player2): Player {
+        // Tournament gender is based on the gender of players. Assumed all players has the same gender
         if ($player1->getPointsForMatch() > $player2->getPointsForMatch()) {
             return $player1;
         } 

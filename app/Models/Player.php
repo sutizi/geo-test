@@ -17,8 +17,6 @@ class Player extends Model
         'name',
         'gender_id',
         'skill_id',
-        'updated_at',
-        'deleted_at'
     ];
     
     public function gender(): BelongsTo
@@ -39,9 +37,10 @@ class Player extends Model
     public function getPointsForMatch(): int {
         $playerLuck = rand(1, self::LUCK_VALUE);
         if($this->gender_id == Gender::MALE) {
-            return ($this->ability + $this->streng + $this->speed) * $playerLuck;
+            return ($this->skill->force + $this->skill->velocity) * $playerLuck;
         } else {
-            return ($this->ability + $this->reaction) * $playerLuck;
+            return ($this->skill->force + $this->skill->velocity + (100 - $this->skill->reaction_time)) * $playerLuck;
         }
     }
 }
+
